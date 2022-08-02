@@ -1,6 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
+
 namespace LMS.Web.Models
+
 {
     [Table(name: "Categories")]
     public class Category
@@ -12,6 +15,11 @@ namespace LMS.Web.Models
         [Column(TypeName = "varchar(50)")]
         
         public string CategoryName { get; set; }
+
+        #region Navigation Properties
+        public ICollection<Book> Books { get; set; }
+
+        #endregion
     }
     /****************
      *  CREATE TABLE [Categories]
@@ -19,5 +27,5 @@ namespace LMS.Web.Models
      *      [CategoryId] int NOT NULL IDENTITY (1,1)
      *      , [CategoryName] varchar(50) NOT NULL
      *      , CONSTRAINT )
-     */      
+     */
 }

@@ -19,5 +19,15 @@ namespace LMS.Web.Models
         [DefaultValue(false)]
         public short NumberOfCopies { get; set; }
         public bool IsEnabled { get; set; }
+
+        #region Navigation Properties to the Category Model
+        public int CategoryId { get; set; }
+
+        [ForeignKey(nameof(Book.CategoryId))]
+        public Category Category { get; set; }
+
+        #endregion
+
+
     }
 }
