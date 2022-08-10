@@ -9,9 +9,12 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">LMS.Web</a>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" style="background-color:cornflowerblue">
+            <div class="container" style="background-color:darkorange">
+                
+                <a class="navbar-brand" asp-area="" asp-page="/Index">
+                    <img src="~/images/pic1.png" style="width:100px" />
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -24,20 +27,33 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Manage</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item"
+                                   asp-area="Demos" asp-controller="Employee" asp-action="Index">Registration Form</a>
+                                <a class="dropdown-item" 
+                                   asp-area="Books" asp-controller="Categories" asp-action="Index">Categories</a>
+                                <a class="dropdown-item"
+                                   asp-area="Books" asp-controller="Books" asp-action="Index">Books</a>
+                                   <a class="dropdown-item"
+                                   asp-area="Books" asp-controller="Authors" asp-action="Index">Authors</a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container" style="background-color:yellow">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - LMS.Web - <a asp-area="" asp-page="/Privacy">Privacy</a>
+    <footer class="border-top footer text-muted" style="background-color:chocolate">
+        <div class="container" style="font-display:block; font-weight:900; font-style:normal; font-family:Georgia, 'Times New Roman', Times, serif">
+            &copy; 2022 - Aditya Dubey - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
 

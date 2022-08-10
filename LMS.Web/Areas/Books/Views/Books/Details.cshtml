@@ -1,0 +1,68 @@
+﻿@* @model LMS.Web.Models.Book *@
+@model LMS.Web.Areas.Books.ViewModels.BookViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Book</h4>
+    <hr />
+
+    <center>
+        <div class="card" style="width:50%">
+            <div class="card-title text-center">
+                <h2>@Html.DisplayFor(model => model.Category.CategoryName)</h2>
+            </div>
+            <img class="card-img-top" src="@Model.ImageUrl" alt="@Model.BookTitle" 
+                 style="max-height: 300px;">
+            <div class="card-body">
+                <h4 class="card-title">@Model.BookTitle</h4>
+                <div class="row">
+                    <div class="col-4 card-text">
+                        @Html.DisplayNameFor(model => model.NumberOfCopies)
+                    </div>
+                    <div class="col-6 card-text">
+                        @Html.DisplayFor(model => model.NumberOfCopies)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 card-text">
+                        @Html.DisplayNameFor(model => model.IsEnabled)
+                    </div>
+                    <div class="col-6 card-text">
+                        @Html.DisplayFor(model => model.IsEnabled)
+                    </div>
+                </div>
+
+                <div class="row">
+                    @if(Model.Authors != null && Model.Authors.Count > 0)
+                    {
+                        <div class="col-4 card-text">
+                            Authors:
+                        </div>
+
+                        <div class="col-6 card-text">
+                            <ul>
+                                @{
+                                    foreach(var author in Model.Authors)
+                                    {
+                                        <li> @author.AuthorName </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <a asp-action="Edit" asp-route-id="@Model.BookId" class="btn btn-primary">Edit</a>
+                &nbsp;|&nbsp;
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </center>
+
+</div>

@@ -11,5 +11,6 @@ namespace LMS.Web.Data
             : base(options)
         { 
         }
+        public DbSet<Author> Authors { get; set; }
     }
 }
