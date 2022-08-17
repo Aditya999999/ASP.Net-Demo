@@ -24,6 +24,8 @@ namespace LMS.xUnitTestProject
 
             // ACT
             actualResult = a % b;
+            _testOutputHelper.WriteLine("Hello Aditya!!");
+
 
             _testOutputHelper.WriteLine($"input values are {a} and {b}");
             _testOutputHelper.WriteLine("the modulo is {0}", a % b);
