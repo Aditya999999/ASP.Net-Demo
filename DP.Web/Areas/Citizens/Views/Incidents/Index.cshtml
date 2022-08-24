@@ -1,0 +1,66 @@
+﻿@model IEnumerable<DP.Web.Models.Incident>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style="text-shadow:3px 2px 0px #EDBD64">Incidents Section</h1>
+<h4>Please Fill the incident details after filling your details in Complainer's section.</h4>
+
+<p>
+    <a class="btn btn-warning" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IncidentDetail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FileUpload)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfPeopleDied)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfPeopleInjured)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsVideoFootageAvailable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Complainer)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncidentDetail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileUpload)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfPeopleDied)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfPeopleInjured)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsVideoFootageAvailable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Complainer.AadharNumber)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.IncidentId">Edit</a> |
+                    <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.IncidentId">Details</a> |
+                    <a class="btn btn-danger asp-action="Delete" asp-route-id="@item.IncidentId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

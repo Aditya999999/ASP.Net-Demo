@@ -1,0 +1,116 @@
+﻿@model IEnumerable<DP.Web.Models.Complainer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+<h1 style="text-shadow:3px 2px 0px #0F0">Complainer's List</h1>
+
+<p>
+    <a class="btn btn-primary display-6" asp-action="Create">Create New</a>
+</p>
+
+
+
+@foreach (var item in Model)
+{
+    <div class="card" 
+        style="
+                background-color:beige;
+                border-block-color:crimson;
+                border-image:round;
+                margin: 0 auto;
+                margin-bottom:10px;
+                max-width:1000px;
+                display: grid;
+                grid-template-columns:repeat(3, 1fr);
+                gap:20px;
+                font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+        <div class="card-header text-center text-danger text-capitalize">
+            <img src="@Html.DisplayFor(modelItem => item.ImageUpload)" alt="@Html.DisplayFor(modelItem => item.FirstName)" style="max-height:300px">
+        </div>
+        <div class="card-body">
+            @Html.DisplayNameFor(model => model.AadharNumber) -  @Html.DisplayFor(modelItem => item.AadharNumber) <br />
+
+            @* @Html.DisplayNameFor(model => model.ImageUpload) - @Html.DisplayFor(modelItem => item.ImageUpload)*@ 
+
+            @Html.DisplayNameFor(model => model.FirstName) -  @Html.DisplayFor(modelItem => item.FirstName) <br />
+
+            @Html.DisplayNameFor(model => model.LastName) - @Html.DisplayFor(modelItem => item.LastName) <br />
+
+            @Html.DisplayNameFor(model => model.FathersName) - @Html.DisplayFor(modelItem => item.FathersName) <br />
+
+            @Html.DisplayNameFor(model => model.NickName) -  @Html.DisplayFor(modelItem => item.NickName) <br />
+
+            @Html.DisplayNameFor(model => model.Email) - @Html.DisplayFor(modelItem => item.Email) <br />
+
+
+            @Html.DisplayNameFor(model => model.Gender) -  @Html.DisplayFor(modelItem => item.Gender) <br />
+
+            @Html.DisplayNameFor(model => model.MaritalStatus) - @Html.DisplayFor(modelItem => item.MaritalStatus) <br />
+
+            @Html.DisplayNameFor(model => model.DateOfBirth) -  @Html.DisplayFor(modelItem => item.DateOfBirth) <br />
+
+            @Html.DisplayNameFor(model => model.PhoneNumber) - @Html.DisplayFor(modelItem => item.PhoneNumber) <br />
+
+            @Html.DisplayNameFor(model => model.HouseNumber) -  @Html.DisplayFor(modelItem => item.HouseNumber) <br />
+
+            @Html.DisplayNameFor(model => model.Village) -  @Html.DisplayFor(modelItem => item.Village) <br />
+
+            @Html.DisplayNameFor(model => model.PostOffice) -  @Html.DisplayFor(modelItem => item.PostOffice) <br />
+
+            @Html.DisplayNameFor(model => model.PinCode) -  @Html.DisplayFor(modelItem => item.PinCode) <br />
+
+            @Html.DisplayNameFor(model => model.District) -  @Html.DisplayFor(modelItem => item.District) <br />
+
+            @Html.DisplayNameFor(model => model.State) -  @Html.DisplayFor(modelItem => item.State) <br />
+
+            @Html.DisplayNameFor(model => model.Country) -  @Html.DisplayFor(modelItem => item.Country) <br />
+
+        </div>
+        <div class="card-footer text-center">
+        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.ComplainerId">Edit</a>|
+            <a class="btn btn-danger" asp-action="Details" asp-route-id="@item.ComplainerId"> Details </a> |
+            <a class="btn btn-success" asp-action="Delete" asp-route-id="@item.ComplainerId"> Delete </a>
+        </div>
+    </div>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

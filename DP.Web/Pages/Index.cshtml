@@ -1,0 +1,190 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div>
+    <img src="~/Images/pic31.png" style="margin-left:500px; width:70px" />
+</div>
+
+
+<div class="text-center">
+    <span class="display-4" style="font-display:block; font-weight:700; display:inline-block; text-shadow:3px 2px 0px #C0cc"><b>DIGITAL POLICE</b></span><br />
+    <img src="~/Images/pic30.png" style="max-width:100%; display:block">
+    
+</div>
+<div class="digimarquee">
+    <ul>
+        <li>
+            "This portal is a platform for Citizens to file crime related complaints online<br />
+            and seek antecedents verification of prospective of employees (including for<br />
+            domestic help, drivers etc.), tenants or for any other purpose. Citizens can also<br />
+            seek certification of their own antecedents."<br />
+             
+        </li>
+        <li>
+            "The portal would also provide access to authorized persons to use National <br />
+            Database of crime records for the purpose of investigation, policy making, <br />
+            data analytics, research and providing citizen services."
+        </li>
+        <li>
+            The portal consolidates data of current and past Crime occurrences across<br />
+            the country. This data has information pertaining to persons accused or <br />
+            convicted in criminal cases along with associated information such as <br />
+            property stolen/recovered, missing persons, recovered/unidentified dead<br />
+            bodies and so on. This information would help expedite  Police investigations<br />
+            to solve crime as well as to provide antecedent verification services to citizens.
+        </li>
+        <li>
+            The portal also generates various thematic reports of trends of incidence of crime<br />
+            across the country to facilitate policy analysis and interventions. To illustrate,<br />
+            reports such as those pertaining to crime against women & children, societal trends<br />
+            of crimes, patterns of crime involving groups belonging to a particular age or<br />
+            educational qualification and so on, crimes which are more prevalent in certain<br />
+            areas, can be generated from data in this portal.
+        </li>
+        <li>
+            To protect privacy of individuals concerned and for National security reasons the<br />
+            Crime and Criminal data and reports can be searched by authorized Police officers<br />
+            only. Citizens who seek criminal antecedent verification services will be provided<br />
+            responses through email.
+        </li>
+    </ul>
+</div>
+
+<br />
+<br />
+
+<div>
+    <div class="card-columns">
+        <div class="card bg-transparent" style="width:150%; border-left-color:black; border-right-color:black">
+ 
+            <h3 style="text-shadow:3px 2px 0px #C0c0c0"> SERVICES FOR CITIZENS</h3>
+            <a class="dropdown-item"
+               asp-area="Citizens" asp-controller="Complainers" asp-action="Index"><b>&rarr; Register</b></a>
+            <a class="dropdown-item" href="https://cybercrime.gov.in" target="_blank"><b>&rarr; Report Cyber Crime</b></a>
+            <a class="dropdown-item" href="http://www.digitalpolicecitizenservices.gov.in/centercitizen/login.htm" target="_blank"><b>&rarr; Under Crime and Criminal Tracking Network & Systems (CCTNS)</b></a>
+            <div class="service-box" style="width: 100%;">
+                <div class="widget-box-inner" style="float: left; width: auto; padding: 0px; padding-right: 0px;">
+                </div>
+                    <ul style="list-style: none;">
+
+                        <li>1.Missing Person Search.</li>
+                        <li>2.Generate Vehicle NOC. </li>
+                        <li>3. Proclaimed Offenders Information. </li>
+                        <li>4. Locate Nearest PS. </li>
+                    </ul>
+                    <hr>
+                    <a href="https://ncrb.gov.in" target="_blank"><i class="fa fa-edit"></i>&nbsp;NCRB PUBLICATIONS</a>
+                    <ul style="list-style: none;">
+
+                        <li>Kindly visit <a href="https://ncrb.gov.in" target="_blank" style="text-transform: capitalize;">ncrb.gov.in</a> to view various NCRB publications</li>
+
+                    </ul>
+                    <hr>
+                    <a><i class="fa fa-edit"></i>&nbsp;Services provided by State Police Citizen Portals</a>
+                    <span id="lblLowMsg"></span>
+                    &nbsp;
+                    
+                    <h5>Select State:</h5>
+                        <ul>
+                    <li>
+                        <a href="http://citizen.andaman.gov.in/" target="_blank">ANDAMAN AND NICOBAR</a></li>
+                    <li> <a href="https://citizen.appolice.gov.in/jsp/homePage.do?method=getHomePageElements" target="_blank">ANDHRA PRADESH</a></li>
+                    <li> <a href="http://citizenportal.arunpol.gov.in/citizen" target="_blank">ARUNACHAL PRADESH</a></li>
+                    <li> <a href="https://assampolice.assam.gov.in/citizen/login.aspx" target="_blank">ASSAM</a></li>
+                    <li> <a href="https://scrb.bihar.gov.in/" target="_blank">BIHAR</a></li>
+                    <li><a href="http://citizenportal.chandigarhpolice.gov.in" target="_blank">CHANDIGARH</a></li>
+                    <li><a href="http://citizenportal.cgpolice.gov.in/citizen/login.htm?lang=en&amp;stov=325R-CZAX-USME-BKPW-ITG7-9E8V-PBPP-TGPO" target="_blank">CHHATTISGARH</a></li>
+                    <li><a href="http://citizen.dnhpolice.gov.in/" target="_blank">DADRA AND NAGAR HAVELI</a></li>
+                    <li><a href="http://citizen.ddpolice.gov.in/" target="_blank">DAMAN AND DIU</a></li>
+                    <li><a href="https://delhipolice.gov.in/index#service-box" target="_blank">DELHI</a></li>
+                    <li><a href="https://citizen.goapolice.gov.in/" target="_blank">GOA</a></li>
+                    <li> <a href="https://gujhome.gujarat.gov.in/portal" target="_blank">GUJARAT</a></li>
+                    <li> <a href="http://harsamay.gov.in" target="_blank">HARYANA</a></li>
+                    <li> <a href="http://citizenportal.hppolice.gov.in:8080/citizen" target="_blank">HIMACHAL PRADESH</a></li>
+                    <li> <a href="https://www.jkpoliceeservices.gov.in/login.aspx" target="_blank">JAMMU AND KASHMIR</a></li>
+                    <li> <a href="https://citizen.jhpolice.gov.in" target="_blank">JHARKHAND</a></li>
+                    <li> <a href="https://policeseva.ksp.gov.in/Login.aspx" target="_blank">KARNATAKA</a></li>
+                    <li> <a href="https://thuna.keralapolice.gov.in/citizen/login.htm?lang=ml_IN&amp;stov=YGZ9-NXEX-14B3-W442-U1G6-RBCP-UIXX-X2ZQ" target="_blank">KERALA</a></li>
+                    <li><a href="https://citizen.lakshadweeppolice.gov.in/" target="_blank">LAKSHADWEEP</a></li>
+                    <li> <a href="https://citizen.mppolice.gov.in" target="_blank">MADHYA PRADESH</a></li>
+                    <li> <a href="https://citizen.mahapolice.gov.in/Citizen/MH/index.aspx" target="_blank">MAHARASHTRA</a></li>
+                    <li><a href="https://mnpcitizenportal.gov.in" target="_blank">MANIPUR</a></li>
+                    <li> <a href="http://164.100.63.181/citizen/login.aspx" target="_blank">MEGHALAYA</a></li>
+                    <li> <a href="https://cctns.mizoram.gov.in/" target="_blank">MIZORAM</a></li>
+                    <li><a href="https://cp.police.nagaland.gov.in/" target="_blank">NAGALAND</a></li>
+                    <li><a href="https://citizenportal-op.gov.in/citizen/login.aspx" target="_blank">ODISHA</a></li>
+                    <li><a href=" http://citizenportal.police.py.gov.in" target="_blank">PUDUCHERRY</a></li>
+                    <li><a href="http://ppsaanjh.in/" target="_blank">PUNJAB</a></li>
+                    <li><a href="http://police.rajasthan.gov.in/citizen/login.htm" target="_blank">RAJASTHAN</a></li>
+                    <li> <a href="http://citizen.sikkimpolice.nic.in:8080/citizen" target="_blank">SIKKIM</a></li>
+                    <li><a href="https://eservices.tnpolice.gov.in/" target="_blank">TAMIL NADU</a></li>
+                    <li> <a href="https://www.tspolice.gov.in/jsp/homePage?method=getHomePageElements" target="_blank">TELANGANA</a></li>
+                    <li> <a href="http://citizenportal.tripurapolice.nic.in/" target="_blank">TRIPURA</a></li>
+                    <li> <a href="https://cctnsup.gov.in/citizenportal/Login.aspx" target="_blank">UTTAR PRADESH</a></li>
+                    <li> <a href="https://policecitizenportal.uk.gov.in/Citizen/Login.aspx" target="_blank">UTTARAKHAND</a></li>
+                    <li> <a href="http://policesohaiyota.wbpolice.gov.in/" target="_blank">WEST BENGAL</a></li>
+                    </ul>
+                        
+            </div>
+        </div>
+        <div class="card bg-transparent" style="width:150%; border-left-color:black; border-right-color:black; margin-left:200px">
+            <h3 style="text-shadow:3px 2px 0px #C0c0c0"> SERVICES FOR POLICE</h3>
+            <a class="dropdown-item"
+               asp-area="Policemens" asp-controller="PolicemenDetails" asp-action="Index"><b>&rarr; View Policemen Details</b></a>
+            <a class="dropdown-item" href="http://164.100.68.46/tis/" target="_blank"><b>&rarr; I-MOT-MONITORING OF TERRORISM CASE</b></a>
+            <a class="dropdown-item" href="https://cytrain.ncrb.gov.in/" target="_blank"><b>&rarr; CYTRAIN-CYBER INVESTIGATION TRAINING</b></a>
+            <a class="dropdown-item" href="https://ndso.gov.in/NDSO/" target="_blank"><b>&rarr; NDSO - SEXUAL OFFENDER DATABASE</b></a>
+            <a class="dropdown-item" href="https://icjs.gov.in/ITSSO/" target="_blank"><b>&rarr; ITSSO - SEXUAL OFFENCES INVESTIGATION TRACKING</b></a>
+            <a class="dropdown-item" href="https://164.100.44.122/api/home/" target="_blank"><b>&rarr; UNIFY - WEBAPP TO IDENTIFY</b></a>
+            <a class="dropdown-item" href="https://cyberpolice.nic.in/" target="_blank"><b>&rarr; CYBER POLICE PORTAL</b></a>
+            <a class="dropdown-item" href="http://164.100.44.112/ficn/" target="_blank"><b>&rarr; FAKE INDIAN CURRENCY NOTES INFORMATION SYSTEM</b></a>
+            
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<!-- Adding Carousel Slide -->
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+        <li data-target="#demo" data-slide-to="3"></li>
+    </ul>
+
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+        <div class="carousel-item active" style="height: 300px;">
+            <img src="~/Images/pic24.jpg" alt="Chicago" style="position: relative; width:1200px; height:400px;object-fit: cover;">
+        </div>
+        <div class="carousel-item ">
+            <img src="~/Images/pic25.jpg" alt="New York" style="position: relative; width:1200px; height:400px;object-fit: cover;">
+        </div>
+        <div class="carousel-item">
+            <img src="~/Images/pic26.jpg" alt="New York" style="position: relative; width:1200px; height:400px;object-fit: cover;">
+        </div>
+        <div class="carousel-item">
+            <img src="~/Images/pic27.jpg" alt="New York" style="position: relative; width:1200px; height:400px;object-fit: cover;">
+        </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a><br/>
+</div>
+    <div>
+        
+    </div>
+
+
+

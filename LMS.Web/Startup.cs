@@ -13,6 +13,7 @@ using LMS.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Identity;
 
 // NOTE: add the Nuget Package "Swashbuckle.AspNetCore"
 // to enable Swagger Documentation Generation for OpenAPI documentation.
@@ -41,6 +42,13 @@ namespace LMS.Web
             {
                 options.UseSqlServer(Configuration.GetConnectionString("MyDefaultConnectionString"));
             });
+            // Register the OWIN Identity Middleware
+            // to use the default IdentityUser and IdentityRole profiles
+            // and store the data in the ApplicationDbContext
+            services
+                .AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
 
             services.AddRazorPages();
 
@@ -89,6 +97,7 @@ namespace LMS.Web
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

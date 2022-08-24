@@ -1,0 +1,56 @@
+﻿@model DP.Web.Models.ComplaintAssignment
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 style="text-shadow: 3px 2px 0px #728C00">Create</h1>
+
+<h4 style="text-shadow: 3px 2px 0px #A008">ComplaintAssignment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ComplainerId" class="control-label"></label>
+                <select asp-for="ComplainerId" class="form-control bg-info border-dark" asp-items="ViewBag.ComplainerId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PolicemenId" class="control-label"></label>
+                <select asp-for="PolicemenId" class="form-control bg-info border-dark" asp-items="ViewBag.PolicemenId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssignedDate" class="control-label"></label>
+                <input asp-for="AssignedDate" class="form-control bg-info border-dark" />
+                <span asp-validation-for="AssignedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input bg-info border-dark" asp-for="IsAssigned" /> @Html.DisplayNameFor(model => model.IsAssigned)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input bg-info border-dark" asp-for="IsResolved" /> @Html.DisplayNameFor(model => model.IsResolved)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ComplaintResolvedDate" class="control-label"></label>
+                <input asp-for="ComplaintResolvedDate" class="form-control bg-info border-dark" />
+                <span asp-validation-for="ComplaintResolvedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" style="margin-left:400px; width:450px" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-dark" asp-action="Index" style="margin-left:400px; width:450px; box-shadow:revert">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

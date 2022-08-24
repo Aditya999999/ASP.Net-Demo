@@ -1,0 +1,50 @@
+﻿@model IEnumerable<DP.Web.Models.PolicemenDetail>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style="text-shadow:3px 2px 0px #C0C">Policemen Personals</h1>
+
+<p>
+    <a class="btn btn-warning" asp-action="Create">Create New</a>
+</p>
+@foreach (var item in Model)
+{
+    <div class="card" style="background-color:beige; margin-bottom:40px; border-block-color:crimson; border-image:round;width:30%">
+        <div class="card-header text-center text-danger text-capitalize">
+            <img src ="@Html.DisplayFor(modelItem => item.ImageUpload)" alt="@Html.DisplayFor(modelItem => item.Name)" style="max-height:300px" >
+            <h3><b>@Html.DisplayNameFor(model => model.Name) - @Html.DisplayFor(modelItem => item.Name )</b></h3>
+        </div>
+        <div class="card-body">
+        
+
+    @Html.DisplayNameFor(model => model.FathersName) - @Html.DisplayFor(modelItem => item.FathersName)<br />
+
+            @Html.DisplayNameFor(model => model.AadharNumber) - @Html.DisplayFor(modelItem => item.AadharNumber) <br />
+
+            @Html.DisplayNameFor(model => model.DateOfBirth) - @Html.DisplayFor(modelItem => item.DateOfBirth) <br />
+
+            @Html.DisplayNameFor(model => model.Gender) - @Html.DisplayFor(modelItem => item.Gender) <br />
+
+            @Html.DisplayNameFor(model => model.Rank) - @Html.DisplayFor(modelItem => item.Rank) <br />
+
+            @Html.DisplayNameFor(model => model.DateOfJoining) - @Html.DisplayFor(modelItem => item.DateOfJoining) <br />
+
+   @* @Html.DisplayNameFor(model => model.ImageUpload) - @Html.DisplayFor(modelItem => item.ImageUpload)*@
+
+            @Html.DisplayNameFor(model => model.Department) - @Html.DisplayFor(modelItem => item.Department.DepartmentName) <br />
+
+            @Html.DisplayNameFor(model => model.PlaceOfPosting) - @Html.DisplayFor(modelItem => item.PlaceOfPosting) <br />
+
+
+
+        </div>
+        <div class="card-footer text-center">
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.DetailId">Edit</a> |
+            <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.DetailId">Details</a> |
+            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.DetailId">Delete</a>
+         </div>
+    </div>
+}
+
