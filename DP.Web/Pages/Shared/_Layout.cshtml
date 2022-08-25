@@ -40,7 +40,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <button class="btn btn-outline-dark" asp-area="" asp-page="/Index">Home</button>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         @*<li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
@@ -75,14 +75,14 @@
                                    asp-area="Policemens" asp-controller="PolicemenDetails" asp-action="Index">Policemen Details</a>
                                 <a class="dropdown-item" 
                                    asp-area="Policemens" asp-controller="Departments" asp-action="Index">Departments</a>
-                                @*<a class="dropdown-item"
-                                   asp-area="Policemens" asp-controller="ComplaintAssignments" asp-action="Index">Complaint Management</a>*@
+                                <a class="dropdown-item"
+                                   asp-area="Policemens" asp-controller="ComplaintAssignments" asp-action="Index">Complaint Management</a>
                                 <a class="dropdown-item"
                                    asp-area="Citizens" asp-controller="Complainers" asp-action="Index">View Complainers List</a>
                                 <a class="dropdown-item"
-                                   asp-area="Menu" asp-controller="Home" asp-action="Index">View Incident by Complainers List</a>
+                                   asp-area="Menu" asp-controller="Home" asp-action="Index">View Incident by Complainers Name</a>
                                 <a class="dropdown-item"
-                                   asp-area="Menu" asp-controller="Value" asp-action="Index">View Complaint Assignment by PolicemenAadharNumber</a>
+                                   asp-area="Menu" asp-controller="Value" asp-action="Index">View PolicemenDetails by Department</a>
                             </div>
                         </li>
 

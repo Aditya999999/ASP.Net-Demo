@@ -45,7 +45,7 @@ namespace DP.Web.Areas.Policemens.Controllers
             var complaintAssignment = await _context.ComplaintAssignments
                 .Include(c => c.Complainer)
                 .Include(c => c.PolicemenDetail)
-                .FirstOrDefaultAsync(m => m.DetailId == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (complaintAssignment == null)
             {
                 return NotFound();
@@ -108,7 +108,7 @@ namespace DP.Web.Areas.Policemens.Controllers
 
         public async Task<IActionResult> Edit(int id, [Bind("Id,ComplainerId,PolicemenId,AssignedDate,IsAssigned,IsResolved,ComplaintResolvedDate")] ComplaintAssignment complaintAssignment)
         {
-            if (id != complaintAssignment.DetailId)
+            if (id != complaintAssignment.Id)
             {
                 return NotFound();
             }
@@ -122,7 +122,7 @@ namespace DP.Web.Areas.Policemens.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ComplaintAssignmentExists(complaintAssignment.DetailId))
+                    if (!ComplaintAssignmentExists(complaintAssignment.Id))
                     {
                         return NotFound();
                     }
@@ -150,7 +150,7 @@ namespace DP.Web.Areas.Policemens.Controllers
             var complaintAssignment = await _context.ComplaintAssignments
                 .Include(c => c.Complainer)
                 .Include(c => c.PolicemenDetail)
-                .FirstOrDefaultAsync(m => m.DetailId == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (complaintAssignment == null)
             {
                 return NotFound();
@@ -172,7 +172,7 @@ namespace DP.Web.Areas.Policemens.Controllers
 
         private bool ComplaintAssignmentExists(int id)
         {
-            return _context.ComplaintAssignments.Any(e => e.DetailId == id);
+            return _context.ComplaintAssignments.Any(e => e.Id == id);
         }
     }
 }

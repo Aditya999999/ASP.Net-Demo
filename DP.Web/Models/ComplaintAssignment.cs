@@ -10,7 +10,7 @@ namespace DP.Web.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        virtual public int DetailId { get; set; }
+        virtual public int Id { get; set; }
 
         #region Navigation Properties to the Complainer Model
         [JsonIgnore]                //Suppress the information about the FK Object to the Api.
