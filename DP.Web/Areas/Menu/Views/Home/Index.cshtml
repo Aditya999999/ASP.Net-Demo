@@ -1,0 +1,46 @@
+﻿@using DP.Web.Areas.Menu.ViewModels
+@model ShowIncidentViewModel
+
+@{
+}
+
+<h1 style="margin-left:200px; text-shadow:3px 2px 0px #C0C">Search Incident Detail by Name</h1>
+
+<div class="row">
+    <div class="col-md-3">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="ComplainerId" class="control-label"></label>
+                <select asp-for="ComplainerId" class="form-control" asp-items="ViewBag.ComplainerId"></select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Get items</button>
+        </form>
+    </div>
+</div>
+
+
+@if (Model != null && Model.Incidents != null)
+{
+    <form method="post">
+        <input type="hidden" asp-for="ComplainerId" />
+
+        <div class="card-columns mt-3">
+            @foreach (var item in Model.Incidents)
+            {
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Complainer ID - @item.ComplainerId </h4>
+                        <p class="card-text">Incident Detail - @item.IncidentDetail </p>
+                    </div>
+                    <div class="card-footer">
+                       @* <button class="btn btn-success"
+                   asp-area="Policemens" asp-controller="ComplaintAssignments" asp-action="Index">Go To Complaint Management</button>*@
+                    </div>
+                </div>
+            }
+        </div>
+    </form>
+}

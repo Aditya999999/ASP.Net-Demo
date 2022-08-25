@@ -14,6 +14,9 @@ using Newtonsoft.Json.Linq;
 namespace DP.Web.Areas.Citizens.Controllers
 {
     [Area("Citizens")]
+
+    //Authorize only to AppAdmin, Citizen and Policemen to access this controller functionality.
+
     [Authorize(Roles ="AppAdmin, Citizen, Policemen")]
     public class ComplainersController : Controller
     {
@@ -36,6 +39,10 @@ namespace DP.Web.Areas.Citizens.Controllers
         }
 
         // GET: Citizens/Complainers/Details/5
+
+        //Only AppAdmin and Policemen can see the details of complainers.
+
+        [Authorize(Roles ="AppAdmin, Policemen")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -63,6 +70,11 @@ namespace DP.Web.Areas.Citizens.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+
+        //The basic purpose of ValidateAntiForgeryToken attribute is to prevent cross-site request forgery attacks.
+        //A cross-site request forgery is an attack in which a harmful script element, malicious command, or code is sent
+        //from the browser of a trusted user.
+
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ComplainerId,AadharNumber,ImageUpload,FirstName,LastName,FathersName,NickName,Email,Gender,MaritalStatus,DateOfBirth,PhoneNumber,HouseNumber,Village,PostOffice,PinCode,District,State,Country")] Complainer complainer)
         {
@@ -92,6 +104,9 @@ namespace DP.Web.Areas.Citizens.Controllers
         }
 
         // GET: Citizens/Complainers/Edit/5
+
+        //Only AppAdmin and Policemen have access to Editinig
+        
         [Authorize(Roles ="AppAdmin, Policemen")]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -112,6 +127,11 @@ namespace DP.Web.Areas.Citizens.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+
+        //The basic purpose of ValidateAntiForgeryToken attribute is to prevent cross-site request forgery attacks.
+        //A cross-site request forgery is an attack in which a harmful script element, malicious command, or code is sent
+        //from the browser of a trusted user.
+
         [ValidateAntiForgeryToken]
         
         public async Task<IActionResult> Edit(int id, [Bind("ComplainerId,AadharNumber,ImageUpload,FirstName,LastName,FathersName,NickName,Email,Gender,MaritalStatus,DateOfBirth,PhoneNumber,HouseNumber,Village,PostOffice,PinCode,District,State,Country")] Complainer complainer)
@@ -146,6 +166,9 @@ namespace DP.Web.Areas.Citizens.Controllers
         }
 
         // GET: Citizens/Complainers/Delete/5
+
+        //Authorized only AppAdmin and Policemen for Deleting access.
+
         [Authorize(Roles = "AppAdmin, Policemen")]
         public async Task<IActionResult> Delete(int? id)
         {

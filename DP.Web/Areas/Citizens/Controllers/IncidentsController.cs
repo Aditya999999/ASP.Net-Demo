@@ -12,9 +12,14 @@ using Microsoft.AspNetCore.Authorization;
 namespace DP.Web.Areas.Citizens.Controllers
 {
     [Area("Citizens")]
+
+    //Authorize only to AppAdmin , Citizen and Policemen to access the Incident Controller.
+
     [Authorize(Roles ="AppAdmin, Citizen, Policemen")]
     public class IncidentsController : Controller
     {
+        //readonly is a constant defined at runtime.
+
         private readonly ApplicationDbContext _context;
 
         public IncidentsController(ApplicationDbContext context)
@@ -30,7 +35,10 @@ namespace DP.Web.Areas.Citizens.Controllers
         }
 
         // GET: Citizens/Incidents/Details/5
-        [Authorize(Roles = "AppAdmin, Citizen, Policemen")]
+
+        //Authorize only AppAdmin and Policemen to access Details of Incidents Occured.
+
+        [Authorize(Roles = "AppAdmin, Policemen")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -39,7 +47,7 @@ namespace DP.Web.Areas.Citizens.Controllers
             }
 
             var incident = await _context.Incidents
-                .Include(i => i.Complainer)
+                .Include(i => i.Complainer)        //Including Complainer Explicitly because ComplainerId is Foreign Key from another table.  
                 .FirstOrDefaultAsync(m => m.IncidentId == id);
             if (incident == null)
             {
@@ -52,7 +60,7 @@ namespace DP.Web.Areas.Citizens.Controllers
         // GET: Citizens/Incidents/Create
         public IActionResult Create()
         {
-            ViewData["ComplainerId"] = new SelectList(_context.Complainers, "ComplainerId", "AadharNumber");
+            ViewData["ComplainerId"] = new SelectList(_context.Complainers, "ComplainerId", "AadharNumber"); //Populate the aadhar number from Complainers Table in List.
             return View();
         }
 
@@ -60,6 +68,11 @@ namespace DP.Web.Areas.Citizens.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+
+        //The basic purpose of ValidateAntiForgeryToken attribute is to prevent cross-site request forgery attacks.
+        //A cross-site request forgery is an attack in which a harmful script element, malicious command, or code is sent
+        //from the browser of a trusted user.
+
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IncidentId,IncidentDetail,FileUpload,NumberOfPeopleDied,NumberOfPeopleInjured,IsVideoFootageAvailable,ComplainerId")] Incident incident)
         {
@@ -76,6 +89,9 @@ namespace DP.Web.Areas.Citizens.Controllers
         }
 
         // GET: Citizens/Incidents/Edit/5
+
+        //Authorizing AppAdmin and Policemen to access the Edit Section.
+
         [Authorize(Roles ="AppAdmin, Policemen")]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -97,6 +113,11 @@ namespace DP.Web.Areas.Citizens.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+
+        //The basic purpose of ValidateAntiForgeryToken attribute is to prevent cross-site request forgery attacks.
+        //A cross-site request forgery is an attack in which a harmful script element, malicious command, or code is sent
+        //from the browser of a trusted user.
+
         [ValidateAntiForgeryToken]
         
         public async Task<IActionResult> Edit(int id, [Bind("IncidentId,IncidentDetail,FileUpload,NumberOfPeopleDied,NumberOfPeopleInjured,IsVideoFootageAvailable,ComplainerId")] Incident incident)
@@ -131,6 +152,8 @@ namespace DP.Web.Areas.Citizens.Controllers
         }
 
         // GET: Citizens/Incidents/Delete/5
+        //Authorize AppAdmin and Policemen to access delete
+
         [Authorize(Roles = "AppAdmin, Policemen")]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -152,6 +175,11 @@ namespace DP.Web.Areas.Citizens.Controllers
 
         // POST: Citizens/Incidents/Delete/5
         [HttpPost, ActionName("Delete")]
+
+        //The basic purpose of ValidateAntiForgeryToken attribute is to prevent cross-site request forgery attacks.
+        //A cross-site request forgery is an attack in which a harmful script element, malicious command, or code is sent
+        //from the browser of a trusted user.
+
         [ValidateAntiForgeryToken]
         
         public async Task<IActionResult> DeleteConfirmed(int id)

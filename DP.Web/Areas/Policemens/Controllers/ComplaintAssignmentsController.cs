@@ -13,9 +13,13 @@ using System.Data;
 namespace DP.Web.Areas.Policemens.Controllers
 {
     [Area("Policemens")]
+
+    //Authorize only AppAdmin and Policemen to access the complainer assignment controller.
+
     [Authorize(Roles = "AppAdmin, Policemen")]
     public class ComplaintAssignmentsController : Controller
     {
+        //readonly constants are defined at run-time.
         private readonly ApplicationDbContext _context;
 
         public ComplaintAssignmentsController(ApplicationDbContext context)
@@ -41,7 +45,7 @@ namespace DP.Web.Areas.Policemens.Controllers
             var complaintAssignment = await _context.ComplaintAssignments
                 .Include(c => c.Complainer)
                 .Include(c => c.PolicemenDetail)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.DetailId == id);
             if (complaintAssignment == null)
             {
                 return NotFound();
@@ -104,7 +108,7 @@ namespace DP.Web.Areas.Policemens.Controllers
 
         public async Task<IActionResult> Edit(int id, [Bind("Id,ComplainerId,PolicemenId,AssignedDate,IsAssigned,IsResolved,ComplaintResolvedDate")] ComplaintAssignment complaintAssignment)
         {
-            if (id != complaintAssignment.Id)
+            if (id != complaintAssignment.DetailId)
             {
                 return NotFound();
             }
@@ -118,7 +122,7 @@ namespace DP.Web.Areas.Policemens.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ComplaintAssignmentExists(complaintAssignment.Id))
+                    if (!ComplaintAssignmentExists(complaintAssignment.DetailId))
                     {
                         return NotFound();
                     }
@@ -146,7 +150,7 @@ namespace DP.Web.Areas.Policemens.Controllers
             var complaintAssignment = await _context.ComplaintAssignments
                 .Include(c => c.Complainer)
                 .Include(c => c.PolicemenDetail)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.DetailId == id);
             if (complaintAssignment == null)
             {
                 return NotFound();
@@ -168,7 +172,7 @@ namespace DP.Web.Areas.Policemens.Controllers
 
         private bool ComplaintAssignmentExists(int id)
         {
-            return _context.ComplaintAssignments.Any(e => e.Id == id);
+            return _context.ComplaintAssignments.Any(e => e.DetailId == id);
         }
     }
 }

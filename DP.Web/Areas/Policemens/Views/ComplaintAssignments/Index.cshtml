@@ -4,8 +4,9 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
+<marquee scrollamount: 10>
+<h1 style="text-shadow:3px 2px 0px #FF0">Complaint Assignment Details</h1>
+</marquee>
 <p>
     <a class="btn btn-outline-dark" asp-action="Create">Create New</a>
 </p>
@@ -55,9 +56,9 @@
                 @Html.DisplayFor(modelItem => item.ComplaintResolvedDate)
             </td>
             <td>
-                    <a class="btn btn-outline-danger" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a class="btn btn-outline-success" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a class="btn btn-outline-dark" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a class="btn btn-outline-danger" asp-action="Edit" asp-route-id="@item.DetailId">Edit</a> |
+                    <a class="btn btn-outline-success" asp-action="Details" asp-route-id="@item.DetailId">Details</a> |
+                    <a class="btn btn-outline-dark" asp-action="Delete" asp-route-id="@item.DetailId">Delete</a>
             </td>
         </tr>
 }

@@ -35,6 +35,7 @@ namespace DP.Web.Areas.Policemens.Controllers
         }
 
         // GET: Policemens/PolicemenDetails/Details/5
+        [Authorize(Roles ="AppAdmin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -90,7 +91,7 @@ namespace DP.Web.Areas.Policemens.Controllers
         }
 
         // GET: Policemens/PolicemenDetails/Edit/5
-        [Authorize(Roles = "AppAdmin, Policemen")]
+        [Authorize(Roles = "AppAdmin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -153,7 +154,7 @@ namespace DP.Web.Areas.Policemens.Controllers
         }
 
         // GET: Policemens/PolicemenDetails/Delete/5
-        [Authorize(Roles = "AppAdmin, Policemen")]
+        [Authorize(Roles = "AppAdmin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

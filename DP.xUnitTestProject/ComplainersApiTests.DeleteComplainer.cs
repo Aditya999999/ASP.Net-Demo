@@ -60,7 +60,7 @@ namespace DP.xUnitTestProject
         }
 
         [Fact]
-        public void DeleteCategory_OkResult()
+        public void DeleteComplainer_OkResult()
         {
             // ARRANGE
             var dbName = nameof(ComplainersApiTests.DeleteComplainer_BadRequestResult);
