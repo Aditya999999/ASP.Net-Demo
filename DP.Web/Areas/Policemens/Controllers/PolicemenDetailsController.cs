@@ -55,6 +55,8 @@ namespace DP.Web.Areas.Policemens.Controllers
         }
 
         // GET: Policemens/PolicemenDetails/Create
+        //Registeration of policemen details are only authorized to Admin.
+        [Authorize(Roles ="AppAdmin")]
         public IActionResult Create()
         {
             ViewData["DepartmentId"] = new SelectList(_context.Departments, "DepartmentId", "DepartmentName");
@@ -122,14 +124,6 @@ namespace DP.Web.Areas.Policemens.Controllers
 
             if (ModelState.IsValid)
             {
-                bool isFound
-                    = _context.PolicemenDetails.Any(p => p.AadharNumber == policemenDetail.AadharNumber);
-                if (isFound)
-                {
-                    ModelState.AddModelError("AadharNumber", "A duplicate entry with same aadhar number exists.");
-                }
-                else
-                {
                     try
                     {
                         _context.Update(policemenDetail);
@@ -148,7 +142,7 @@ namespace DP.Web.Areas.Policemens.Controllers
                     }
                     return RedirectToAction(nameof(Index));
                 }
-            }
+            
             ViewData["DepartmentId"] = new SelectList(_context.Departments, "DepartmentId", "DepartmentName", policemenDetail.DepartmentId);
             return View(policemenDetail);
         }

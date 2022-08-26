@@ -63,9 +63,8 @@
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" style="color:black">Citizen</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item"
-                                   asp-area="Citizens" asp-controller="Complainers" asp-action="Index">Complainer</a>
-                                <a class="dropdown-item" 
-                                   asp-area="Citizens" asp-controller="Incidents" asp-action="Index">Incident</a>
+                                   asp-area="Citizens" asp-controller="Complainers" asp-action="Create">RaiseComplaint</a>
+                                
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -77,6 +76,27 @@
                                    asp-area="Policemens" asp-controller="Departments" asp-action="Index">Departments</a>
                                 <a class="dropdown-item"
                                    asp-area="Policemens" asp-controller="ComplaintAssignments" asp-action="Index">Complaint Management</a>
+                                <a class="dropdown-item" 
+                                   asp-area="Citizens" asp-controller="Incidents" asp-action="Index">View Incident Details</a>
+                                   <a class="dropdown-item"
+                                   asp-area="Citizens" asp-controller="Complainers" asp-action="Index">View Complainers List</a>
+                                <a class="dropdown-item"
+                                   asp-area="Menu" asp-controller="Home" asp-action="Index">View Incident by Complainers Name</a>
+                                <a class="dropdown-item"
+                                   asp-area="Menu" asp-controller="Value" asp-action="Index">View PolicemenDetails by Department</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" style="color:black">Admin</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item"
+                                   asp-area="Policemens" asp-controller="PolicemenDetails" asp-action="Create">Register Newly Joined Policeman</a>
+                                <a class="dropdown-item"
+                                   asp-area="Policemens" asp-controller="Departments" asp-action="Create">Create New Department</a>
+                                <a class="dropdown-item"
+                                   asp-area="Policemens" asp-controller="ComplaintAssignments" asp-action="Create">Complaint Management</a>
+                                <a class="dropdown-item"
+                                   asp-area="Citizens" asp-controller="Incidents" asp-action="Index">View Incident Details</a>
                                 <a class="dropdown-item"
                                    asp-area="Citizens" asp-controller="Complainers" asp-action="Index">View Complainers List</a>
                                 <a class="dropdown-item"

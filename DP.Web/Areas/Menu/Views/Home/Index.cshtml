@@ -16,7 +16,7 @@
                 <select asp-for="ComplainerId" class="form-control" asp-items="ViewBag.ComplainerId"></select>
             </div>
 
-            <button type="submit" class="btn btn-primary">Get items</button>
+            <button type="submit" class="btn btn-primary">Search Incidents</button>
         </form>
     </div>
 </div>
@@ -32,6 +32,7 @@
             {
                 <div class="card">
                     <div class="card-body">
+                        <p>@item.Complainer.District</p>
                         <h4 class="card-title">Complainer ID - @item.ComplainerId </h4>
                         <p class="card-text">Incident Detail - @item.IncidentDetail </p>
                     </div>

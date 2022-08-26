@@ -4,9 +4,9 @@
     ViewData["Title"] = "Index";
 }
 
-<marquee scrollamount: 10><h1 style="text-shadow:3px 2px 0px #C0C">Policemen Personals Details</h1></marquee>
+<marquee Scrollamount: 9><h1 style="text-shadow:3px 2px 0px #C0C">Policemen Personals Details</h1></marquee>
 
-<p>
+@*<p>
     <a style="display:block;
                       width: 100%;
                       border: none;
@@ -14,14 +14,14 @@
                       text-align: center" class="btn btn-warning" asp-action="Create">
         Create New
     </a>
-</p>
+</p>*@
 <div class="card-columns">
 @foreach (var item in Model)
 {
-    <div class="card" style="background-color:beige; border-block-color:crimson; border-image:round">
+    <div class="card" style="background-color:beige; border-block-color:crimson; border-image:round; width:100%">
         <div class="card-header text-center text-danger text-capitalize">
-            <img src ="@Html.DisplayFor(modelItem => item.ImageUpload)" alt="@Html.DisplayFor(modelItem => item.Name)" style="max-height:300px" >
-            <h3><b>@Html.DisplayNameFor(model => model.Name) - @Html.DisplayFor(modelItem => item.Name )</b></h3>
+                <img class="rounded-circle" src="@Html.DisplayFor(modelItem => item.ImageUpload)" alt="@Html.DisplayFor(modelItem => item.Name)" style="max-height:300px;border:3px solid black" width="200" height="150">
+            <h5><b>@Html.DisplayNameFor(model => model.Name) - @Html.DisplayFor(modelItem => item.Name )</b></h5>
         </div>
         <div class="card-body">
         

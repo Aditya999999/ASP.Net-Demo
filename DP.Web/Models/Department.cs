@@ -8,6 +8,7 @@ namespace DP.Web.Models
     [Table(name: "Department")]
     public class Department
     {
+        //Primary Key of the table
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         virtual public int DepartmentId { get; set; }

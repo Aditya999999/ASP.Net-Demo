@@ -10,6 +10,7 @@ using DP.Web.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json.Linq;
+using DP.Web.Areas.Citizens.ViewModels;
 
 namespace DP.Web.Areas.Citizens.Controllers
 {
@@ -31,6 +32,7 @@ namespace DP.Web.Areas.Citizens.Controllers
         }
 
         // GET: Citizens/Complainers
+        [Authorize(Roles ="AppAdmin, Policemen")]
         public async Task<IActionResult> Index()
         {
             _logger.LogInformation("-----Retrieved all the complainers from the database.");
@@ -76,8 +78,13 @@ namespace DP.Web.Areas.Citizens.Controllers
         //from the browser of a trusted user.
 
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ComplainerId,AadharNumber,ImageUpload,FirstName,LastName,FathersName,NickName,Email,Gender,MaritalStatus,DateOfBirth,PhoneNumber,HouseNumber,Village,PostOffice,PinCode,District,State,Country")] Complainer complainer)
+        public async Task<IActionResult> Create([Bind("ComplainerId,AadharNumber,ImageUpload,FirstName,LastName,FathersName,NickName,Email,Gender,MaritalStatus,DateOfBirth,PhoneNumber,HouseNumber,Village,PostOffice,PinCode,District,State,Country")] Complainer complainer
+            , ComplainerViewModel viewModel)
         {
+            //1. Authentication
+
+            //2. Authorization
+
             //Declaring isDuplicateFound variable to apply duplicate check by taking reference of Aadhar Number 
             bool isDuplicateFound
                 = _context.Complainers.Any(c => c.AadharNumber == complainer.AadharNumber);
@@ -86,19 +93,31 @@ namespace DP.Web.Areas.Citizens.Controllers
             {
                 ModelState.AddModelError("AadharNumber", "Duplicate! Another entry with same aadhar exists, you have to wait till another entry is not getting deleted.");
             }
+            
             else
             {
+                //3. Validation (Perform server side validation)
+                if (ModelState.IsValid)
+                {
+                    //Check if the DoB is greater than 18 years
+                    if (System.DateTime.Now.Year - 18 < viewModel.DateOfBirth.Year)
+                    {
+                        ModelState.AddModelError("DateOfBirth", "Date of Birth should be greater than 18 years! ");
+                    }
+                }
+
+                //4. Activity / action (perform server side activity)
                 if (ModelState.IsValid)
                 {
                     _context.Add(complainer);
                     await _context.SaveChangesAsync();
                     //return RedirectToAction(nameof("Index");
-                    return RedirectToAction("Index", "Incidents");
+                    return RedirectToAction("Create", "Incidents");
                    
                 
                 }
             }
-
+                //5. Audit Logging
                 return View(complainer);
             
         }
@@ -143,7 +162,7 @@ namespace DP.Web.Areas.Citizens.Controllers
 
             if (ModelState.IsValid)
             {
-                
+                //Exception-handling for Editing the details 
                     try
                     {
                         _context.Update(complainer);

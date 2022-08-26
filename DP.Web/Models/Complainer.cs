@@ -9,11 +9,13 @@ namespace DP.Web.Models
     [Table(name:"Complainer")]
     public class Complainer
     {
+        //Primary key of the table
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         virtual public int ComplainerId { get; set; }
 
         [Required]
+        //string length of size 12 will be accepted
         [StringLength(12)]
         virtual public string AadharNumber { get; set; }
 
@@ -80,7 +82,9 @@ namespace DP.Web.Models
 
         #region Navigation to the Incident Model
         [JsonIgnore]                                  //Suppress the information about the FK Object to the API.
-        public ICollection<Incident> Incidents { get; set; }
+
+        //generic collection of Incident because it is child ,complainer id is foreign key in Incident model.
+        public ICollection<Incident> Incidents { get; set; } 
 
         #endregion
 

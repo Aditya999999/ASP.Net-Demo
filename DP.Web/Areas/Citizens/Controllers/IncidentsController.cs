@@ -80,7 +80,9 @@ namespace DP.Web.Areas.Citizens.Controllers
             {
                 _context.Add(incident);
                 await _context.SaveChangesAsync();
+               
                 //return RedirectToAction(nameof(Index));
+                
                 return View("Confirmation");
             }
             ViewData["ComplainerId"] = new SelectList(_context.Complainers, "ComplainerId", "AadharNumber", incident.ComplainerId);

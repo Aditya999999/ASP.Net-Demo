@@ -4,63 +4,63 @@
     ViewData["Title"] = "Index";
 }
 
-<h1 style="text-shadow:3px 2px 0px #EDBD64">Incidents Section</h1>
-<h4>Please Fill the incident details after filling your details in Complainer's section.</h4>
+<marquee scrollamount=10 draggable={axis:"x"}><h1 style="text-shadow:3px 2px 0px #EDBD64">Incidents Detail Section</h1></marquee>
 
-<p>
+
+@*<p>
     <a class="btn btn-warning" asp-action="Create">Create New</a>
-</p>
+</p>*@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.IncidentId)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.IncidentDetail)
             </th>
             @*<th>
                 @Html.DisplayNameFor(model => model.FileUpload)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.NumberOfPeopleDied)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NumberOfPeopleInjured)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.IsVideoFootageAvailable)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Complainer)
-            </th>*@
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+           @* <td>
                 @Html.DisplayFor(modelItem => item.IncidentId)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.IncidentDetail)
             </td>
             @*<td>
                 @Html.DisplayFor(modelItem => item.FileUpload)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.NumberOfPeopleDied)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NumberOfPeopleInjured)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.IsVideoFootageAvailable)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Complainer.AadharNumber)
-            </td>*@
+            </td>
             <td>
                 <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.IncidentId">Edit</a> |
                     <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.IncidentId">Details</a> |

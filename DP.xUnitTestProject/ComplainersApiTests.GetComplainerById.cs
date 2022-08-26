@@ -23,7 +23,7 @@ namespace DP.xUnitTestProject
             using var dbContext = DbContextMocker.GetApplicationDbContext(dbName);
 
             var controller = new ComplainersController(dbContext, logger);
-            int findComplainerID = 100;
+            int findComplainerID = 50;
 
             //ACT 
             IActionResult actionResultGet = controller.GetComplainer(findComplainerID).Result;

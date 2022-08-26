@@ -8,6 +8,7 @@ namespace DP.Web.Models
     [Table(name:"Incident")]
     public class Incident
     {
+        //Primary Key of the table
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         virtual public int IncidentId { get; set; }

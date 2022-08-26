@@ -4,14 +4,16 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1 style="text-align:center; text-shadow:2px 2px 0px #C0C">Complainer's Registration</h1>
 
-<h4>Complainer</h4>
+<marquee Scrollamount=10><h5>Please fill all the details correctly. Providing any false information can lead to action against complainer.</h5></marquee>
 <hr />
 <div class="row">
     <div class="col-md-4">
+        
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
             <div class="form-group">
                 <label asp-for="AadharNumber" class="control-label"></label>
                 <input asp-for="AadharNumber" class="form-control bg-info" />
@@ -106,13 +108,14 @@
                 <input type="submit" value="Create" class="btn btn-primary" style="margin-left:400px; width:450px" />
             </div>
         </form>
+
+
     </div>
 </div>
 
 <div>
     <a class="btn btn-outline-dark" asp-action="Index" style="margin-left:400px; width:450px">Back to List</a>
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

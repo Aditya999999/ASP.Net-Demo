@@ -9,6 +9,7 @@ namespace DP.Web.Models
     [Table(name: "PolicemenDetail")]
     public class PolicemenDetail
     {
+        //Primary Key of the table 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 

@@ -8,6 +8,7 @@ namespace DP.Web.Models
     [Table(name:"ComplaintAssignment")]
     public class ComplaintAssignment
     {
+        //Primary Key of the table.
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         virtual public int Id { get; set; }
@@ -23,11 +24,14 @@ namespace DP.Web.Models
 
         #region Navigation Properties to the Policemen Model
         [JsonIgnore]                //Suppress the information about the FK Object to the Api.
+
+        //Foreign Key made in Complaint assignment table by referencing PK Policemen Id of Policemen Details table.
         virtual public int PolicemenId { get; set; }
         [ForeignKey(nameof(ComplaintAssignment.PolicemenId))]
         public PolicemenDetail PolicemenDetail { get; set; }
         #endregion
 
+        //This is the field showing date and time, complaint was assigned.
         virtual public DateTime AssignedDate { get; set; }
 
         [Required]
