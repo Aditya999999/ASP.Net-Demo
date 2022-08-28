@@ -1,127 +1,51 @@
 ﻿@model DP.Web.Models.Complainer
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Complainer'sDetails";
+    var photoPath = "/Images/" + (Model.ImageUpload ?? "pic29.jpg");
 }
 
-<h1>Details</h1>
+<h1>Your Details</h1>
 
-<div>
+
     <h4>Complainer</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AadharNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AadharNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUpload)
-        </dt>
-        <dd class = "col-sm-10">
-            <img src="@Html.DisplayFor(model => model.ImageUpload)" />
-            @*@Html.DisplayFor(model => model.ImageUpload)*@
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FathersName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FathersName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NickName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NickName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaritalStatus)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaritalStatus)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateOfBirth)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HouseNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HouseNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Village)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Village)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PostOffice)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PostOffice)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PinCode)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PinCode)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.District)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.District)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.State)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.State)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Country)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Country)
-        </dd>
-    </dl>
+<div class="row justify-content-center m-3" >
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                 @Html.DisplayNameFor(model => model.FirstName) - @Html.DisplayFor(model => model.FirstName)<br />
+                 @Html.DisplayNameFor(model => model.LastName) -  @Html.DisplayFor(model => model.LastName)
+            </div>
+            <div class="card-body text-center">
+                @Html.DisplayNameFor(model => model.NickName) - @Html.DisplayFor(model => model.NickName)<br />
+                @Html.DisplayNameFor(model => model.FathersName) - @Html.DisplayFor(model => model.FathersName)<br />
+                @Html.DisplayNameFor(model => model.AadharNumber) -  @Html.DisplayFor(model => model.AadharNumber)<br />
+                 <img class="card-img-top" src="@photoPath" runat="server" /><br />
+               
+                 @Html.DisplayNameFor(model => model.Email) - @Html.DisplayFor(model => model.Email)<br />
+                 @Html.DisplayNameFor(model => model.Gender) - @Html.DisplayFor(model => model.Gender)<br />
+                 @Html.DisplayNameFor(model => model.MaritalStatus) - @Html.DisplayFor(model => model.MaritalStatus)<br />
+                  @Html.DisplayNameFor(model => model.DateOfBirth) - @Html.DisplayFor(model => model.DateOfBirth)<br />
+                   @Html.DisplayNameFor(model => model.PhoneNumber) - @Html.DisplayFor(model => model.PhoneNumber)<br />
+                    @Html.DisplayNameFor(model => model.HouseNumber) - @Html.DisplayFor(model => model.HouseNumber)<br />
+                    @Html.DisplayNameFor(model => model.Village) -  @Html.DisplayFor(model => model.Village)<br />
+                    @Html.DisplayNameFor(model => model.PostOffice) - @Html.DisplayFor(model => model.PostOffice)<br />
+                    @Html.DisplayNameFor(model => model.PinCode) - @Html.DisplayFor(model => model.PinCode)<br />
+                    @Html.DisplayNameFor(model => model.District) - @Html.DisplayFor(model => model.District)<br />
+                    @Html.DisplayNameFor(model => model.State) -  @Html.DisplayFor(model => model.State)<br />
+                     @Html.DisplayNameFor(model => model.Country) - @Html.DisplayFor(model => model.Country)
+         </div>
+         <div class="card-footer text-center">
+             @*<a class="btn btn-dark" asp-action="Edit" asp-route-id="@Model.ComplainerId">Edit</a> |*@
+             <a class="btn btn-outline-dark" asp-controller="Incidents" asp-action="Create">Proceed To Next Step</a>
+         </div>
+        </div>
+    </div>
+    
+        
 </div>
-<div>
-    <a class="btn btn-dark" asp-action="Edit" asp-route-id="@Model.ComplainerId">Edit</a> |
-    <a class="btn btn-danger" asp-action="Index">Back to List</a>
-</div>
+
+    
+   @* <a class="btn btn-danger" asp-action="Index">Back to List</a>*@
+

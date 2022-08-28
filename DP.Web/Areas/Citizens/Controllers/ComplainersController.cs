@@ -11,6 +11,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json.Linq;
 using DP.Web.Areas.Citizens.ViewModels;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace DP.Web.Areas.Citizens.Controllers
 {
@@ -21,14 +23,17 @@ namespace DP.Web.Areas.Citizens.Controllers
     [Authorize(Roles ="AppAdmin, Citizen, Policemen")]
     public class ComplainersController : Controller
     {
+        
         private readonly ApplicationDbContext _context;
         private readonly ILogger<ComplainersController> _logger;
-
+        private readonly IHostingEnvironment hostingEnvironment;
         public ComplainersController(ApplicationDbContext context,
-            ILogger<ComplainersController> logger)
+            ILogger<ComplainersController> logger,
+            IHostingEnvironment hostingEnvironment)
         {
             _context = context;
             _logger = logger;
+            this.hostingEnvironment = hostingEnvironment;
         }
 
         // GET: Citizens/Complainers
@@ -78,8 +83,8 @@ namespace DP.Web.Areas.Citizens.Controllers
         //from the browser of a trusted user.
 
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ComplainerId,AadharNumber,ImageUpload,FirstName,LastName,FathersName,NickName,Email,Gender,MaritalStatus,DateOfBirth,PhoneNumber,HouseNumber,Village,PostOffice,PinCode,District,State,Country")] Complainer complainer
-            , ComplainerViewModel viewModel)
+        public async Task<IActionResult> Create(ComplainerViewModel viewModel,
+            ComplainerCreateViewModel model)
         {
             //1. Authentication
 
@@ -87,7 +92,7 @@ namespace DP.Web.Areas.Citizens.Controllers
 
             //Declaring isDuplicateFound variable to apply duplicate check by taking reference of Aadhar Number 
             bool isDuplicateFound
-                = _context.Complainers.Any(c => c.AadharNumber == complainer.AadharNumber);
+                = _context.Complainers.Any(c => c.AadharNumber == model.AadharNumber);
 
             if (isDuplicateFound)
             {
@@ -100,7 +105,7 @@ namespace DP.Web.Areas.Citizens.Controllers
                 if (ModelState.IsValid)
                 {
                     //Check if the DoB is greater than 18 years
-                    if (System.DateTime.Now.Year - 18 < viewModel.DateOfBirth.Year)
+                    if (System.DateTime.Now.Year - 18 < model.DateOfBirth.Year)
                     {
                         ModelState.AddModelError("DateOfBirth", "Date of Birth should be greater than 18 years! ");
                     }
@@ -109,16 +114,46 @@ namespace DP.Web.Areas.Citizens.Controllers
                 //4. Activity / action (perform server side activity)
                 if (ModelState.IsValid)
                 {
-                    _context.Add(complainer);
+                    string uniqueFileName = null;
+                    if (model.ImageUpload != null)
+                    {
+                        string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "Images");
+                        uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ImageUpload.FileName;
+                        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                        model.ImageUpload.CopyTo(new FileStream(filePath, FileMode.Create));
+                    }
+                    Complainer newComplainer = new Complainer
+                    {
+                        AadharNumber = model.AadharNumber,
+                        ImageUpload = uniqueFileName,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        FathersName = model.FathersName,
+                        Email = model.Email,
+                        NickName = model.NickName,
+                        Gender = model.Gender,
+                        MaritalStatus = model.MaritalStatus,
+                        DateOfBirth = model.DateOfBirth,
+                        PhoneNumber = model.PhoneNumber,
+                        HouseNumber = model.HouseNumber,
+                        Village = model.Village,
+                        PostOffice = model.PostOffice,
+                        PinCode = model.PinCode,
+                        District = model.District,
+                        State = model.State,
+                        Country = model.Country
+                    };
+                    _context.Add(newComplainer);
                     await _context.SaveChangesAsync();
                     //return RedirectToAction(nameof("Index");
-                    return RedirectToAction("Create", "Incidents");
-                   
+                    //return RedirectToAction("Create", "Incidents");
+                    return RedirectToAction("Details", new { id = newComplainer.ComplainerId });
                 
                 }
             }
                 //5. Audit Logging
-                return View(complainer);
+                //return View(complainer);
+                return View(model);
             
         }
 
