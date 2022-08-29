@@ -49,7 +49,7 @@ namespace DP.Web.Areas.Citizens.Controllers
 
         //Only AppAdmin and Policemen can see the details of complainers.
 
-        [Authorize(Roles ="AppAdmin, Policemen")]
+        [Authorize(Roles ="AppAdmin, Policemen, Citizen")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
