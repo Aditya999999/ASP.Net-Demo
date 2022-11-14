@@ -25,7 +25,7 @@
     "bootstrap": "^4.6.1",
     "core-js": "^3.20.2",
     "jquery": "^3.6.0",
-    "node-sass": "^5.0.0",
+    "node-sass": "^8.0.0",
     "oidc-client": "~1.11.5",
     "popper.js": "^1.16.1",
     "protractor": "~5.4.2",
@@ -52,7 +52,7 @@
     "typescript": "3.5.3"
   },
   "optionalDependencies": {
-    "node-sass": "^5.0.0",
+    "node-sass": "^8.0.0",
     "protractor": "~5.4.2",
     "ts-node": "~8.4.1",
     "tslint": "~5.20.1"
